@@ -25,6 +25,8 @@ portfolio-optimization/
 * **Stationarity Transformations:** Converts raw historical closing feeds into continuous log returns, guaranteeing structural covariance stationarity required for down-stream mathematical modeling:
     $$\\text{Log Return}_t = \\ln\\left(\\frac{P_t}{P_{t-1}}\\right)$$
 
+![Exploratory Data Analysis Plots](notebooks/visuals/eda_comprehensive_plots.png)
+
 ### Task 2: Classical Econometric Forecasting (`src/forecasting_engine.py`)
 * **Statistical Baseline:** Leverages an `ARIMA(1,0,1)` framework via `statsmodels` to model conditional mean asset returns.
 * **Data Splitting:** Implements chronological out-of-sample partitioning (splitting at `2025-01-01`) to eliminate lookahead bias during performance validations.
@@ -40,6 +42,11 @@ portfolio-optimization/
 * **Constraints:** Enforces an institutional long-only layout:
     $$\\sum w_i = 1.0 \\quad \\text{and} \\quad 0 \\le w_i \\le 1$$
 * **Annualization Logic:** Scales daily mean arrays and non-linear asset covariance matrices to an exact 252-day business trading year.
+![TSLA Future Horizon Forecast](notebooks/visuals/tsla_future_forecast_horizon.png)
+
+![Asset Covariance Matrix Heatmap](notebooks/visuals/covariance_heatmap_matrix.png)
+
+![MPT Efficient Frontier Boundary Curve](notebooks/visuals/efficient_frontier_curve.png)
 
 ### Task 5: Backtesting & Risk Budgeting Engine (`src/backtest_engine.py`)
 * **Historical Simulation:** Generates continuous historical equity curves starting from a standard baseline capital position of \$10,000.
@@ -47,6 +54,8 @@ portfolio-optimization/
 * **Risk Metrics Engine:** Computes non-linear parameters including:
     * **Maximum Drawdown (MDD):** Captures worst-case peak-to-trough systemic drops.
     * **99% Historical Value at Risk (VaR):** Outlines the maximum expected loss within a single business day at a 99% confidence threshold.
+
+    ![Out of Sample Cumulative Growth Tracking](notebooks/visuals/backtest_cumulative_returns.png)
 
 ---
 
